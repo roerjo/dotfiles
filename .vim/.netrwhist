@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/eric/Code/sharehim/app'
+let g:netrw_dirhist_2='/home/eric/Code/sharehim'
+let g:netrw_dirhist_3='/home/eric/Code/sharehim/database'
+let g:netrw_dirhist_4='/home/eric/Code/sharehim/database/seeds'
+let g:netrw_dirhist_5='/home/eric/Code/sharehim/database'
+let g:netrw_dirhist_6='/home/eric/Code/sharehim/database/migrations'
