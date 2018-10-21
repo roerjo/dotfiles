@@ -1,0 +1,23 @@
+session_name: work
+start_directory: ~/code/work/ueg-api/
+windows:
+  - window_name: editor
+    layout: even-horizontal
+    focus: true
+    panes:
+      - shell_command:
+        - vim .
+        focus: true
+      - pane
+  - window_name: local server
+    layout: even-horizontal
+    panes:
+      - clear
+  - window_name: aws dev server
+    layout: even-horizontal
+    panes:
+      - clear
+  - window_name: resources
+    layout: even-horizontal
+    panes:
+      - htop
