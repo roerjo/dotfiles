@@ -238,7 +238,17 @@ noremap <silent><F12> :call quickmenu#toggle(0)<cr>
 " enable cursorline (L) and cmdline help (H)
 let g:quickmenu_options = "HL"
 
+"*
+"
+"Vimux
+"
+"*
 
+"Prompt for a command to run
+map <Leader>rc :VimuxPromptCommand<CR>
+
+"Run last command
+map <Leader>rl :VimuxRunLastCommand<CR>
 
 
 
@@ -344,5 +354,7 @@ Plug 'aserebryakov/filestyle'
 Plug 'mhinz/vim-startify'
 
 Plug 'skywind3000/quickmenu.vim'
+
+Plug 'benmills/vimux'
 
 call plug#end()
