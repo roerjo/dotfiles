@@ -10,6 +10,9 @@ set shiftwidth=4
 "turn on line numbers
 set number
 
+"don't wrap lines if they flow past edge of screen
+set nowrap
+
 "syntax highlighting
 syntax enable
 
@@ -18,7 +21,7 @@ set splitbelow
 set splitright
 
 "copy/paste from clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "Set clipboard pasting to not format
 set pastetoggle=<F2>
@@ -28,6 +31,10 @@ let mapleader=','
 
 "Enable mouse in all modes
 set mouse=a
+
+"Set cursor shape depending on mode
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"
 
 
 
@@ -41,17 +48,14 @@ set incsearch
 "Highlight search matches
 set hlsearch
 
+"Turn off search highlighting
+nmap <Leader><space> :nohlsearch<cr>
+
 
 
 
 
 "----------------Pretty Stuff----------------"
-
-"Set terminal
-set term=screen-256color
-
-"Set 256 colors
-set t_Co=256
 
 "Colorscheme
 colorscheme space-vim-dark
@@ -59,6 +63,10 @@ colorscheme space-vim-dark
 "Powerline
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set laststatus=2
+
+
+
+
 
 "----------------Filetype Settings----------------"
 
@@ -84,9 +92,6 @@ nmap <Leader>ev :e $MYVIMRC<cr>
 "Open snippets directory
 nmap <Leader>es :e ~/.vim/snippets/
 
-"Turn off search highlighting
-nmap <Leader><space> :nohlsearch<cr>
-
 "Maximize current Vim pane
 nmap <Leader>zo <C-w>\| <C-w>_
 
@@ -99,6 +104,8 @@ nnoremap <Leader>ct :!ctags -R --exclude={node_modules,vendor,.git}<CR>
 "Find a tag
 nmap <Leader>ft :tag<space>
 
+"Convert tabs to spaces
+nmap <Leader>t<space> :retab<cr>
 
 
 
@@ -138,7 +145,7 @@ autocmd FileType php noremap <Leader>fq :call PhpExpandClass()<CR>
 let g:php_cs_fixer_rules = "@PSR2"
 
 "Run the PHP checker
-nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+"nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
 
 "Docblock config
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
@@ -210,13 +217,13 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 "*
 
 "Set path to phpmd executable
-let g:phpqa_messdetector_cmd='/home/eric/.composer/vendor/phpmd/phpmd/src/bin/phpmd'
+"let g:phpqa_messdetector_cmd='/home/eric/.config/composer/vendor/phpmd/phpmd/src/bin/phpmd'
 
 "Set path to phpcs executable
-let g:phpqa_codesniffer_cmd='/home/eric/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs'
+"let g:phpqa_codesniffer_cmd='/home/eric/.config/composer/vendor/squizlabs/php_codesniffer/bin/phpcs'
 
 " Stop the location list opening automatically
-let g:phpqa_open_loc = 0
+"let g:phpqa_open_loc = 1
 
 "*
 "
@@ -283,6 +290,8 @@ let NERDTreeQuitOnOpen=1
 "Toggle NerdTree Open/Close
 map <Leader>n :NERDTreeToggle<cr>
 
+"Allow mouse in NerdTree
+let g:NERDTreeMouseMode=3
 
 
 
@@ -294,7 +303,6 @@ augroup autosourcing
     autocmd!
     autocmd BufWritePost .vimrc source %
 augroup END
-
 
 
 
@@ -327,7 +335,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 
 Plug 'ervandew/supertab'
 
-Plug 'joonty/vim-phpqa'
+"Plug 'joonty/vim-phpqa'
 
 Plug 'SirVer/ultisnips'
 

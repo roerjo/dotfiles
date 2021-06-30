@@ -1,0 +1,114 @@
+### SSHD CONFIGURATION ###                                                               
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# What ports, IPs and protocols we listen for                                            
+###############################################################################          
+Port 22                                                                                  
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Use these options to restrict which interfaces/protocols sshd will bind to             
+###############################################################################          
+#ListenAddress ::                                                                        
+#ListenAddress 0.0.0.0                                                                   
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# SSH can utilize two protocols, 1 and 2. Protocol 1 is older and less secure            
+###############################################################################          
+Protocol 2                                                                               
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Server private HostKeys (these are for protocol 2)                                     
+###############################################################################          
+HostKey /etc/ssh/ssh_host_rsa_key                                                        
+HostKey /etc/ssh/ssh_host_dsa_key                                                        
+HostKey /etc/ssh/ssh_host_ecdsa_key                                                      
+HostKey /etc/ssh/ssh_host_ed25519_key  
+
+      
+
+###############################################################################          
+# Allow SSH to spawn child processes that only have the necessary privileges             
+# for their tasks. Deprecated in OpenSSH 7.5 (always on)                                 
+###############################################################################          
+UsePrivilegeSeparation yes                                                               
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Logging                                                                                
+###############################################################################          
+SyslogFacility AUTH                                                                      
+LogLevel INFO                                                                            
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Authentication:                                                                        
+###############################################################################          
+LoginGraceTime 120 # disconnect from client if not logged in within this time            
+PermitRootLogin no # hackers know this is a user and will try to exploit                 
+StrictModes yes                                                                          
+PermitEmptyPasswords no # big risk, do not enable                                        
+RSAAuthentication yes                                                                    
+PubkeyAuthentication yes                                                                 
+HostbasedAuthentication no # risky, only use if in isolated environment                  
+PasswordAuthentication no # best to use keys instead of plain text password              
+ChallengeResponseAuthentication no                                                       
+# Set this to 'yes' to enable PAM authentication, account processing,                    
+# and session processing. If this is enabled, PAM authentication will                    
+# be allowed through the ChallengeResponseAuthentication and                             
+# PasswordAuthentication.  Depending on your PAM configuration,                          
+# PAM authentication via ChallengeResponseAuthentication may bypass                 
+# the setting of "PermitRootLogin yes                                                    
+# If you just want the PAM account and session checks to run without                     
+# PAM authentication, then enable this but set PasswordAuthentication                    
+# and ChallengeResponseAuthentication to 'no'.                                           
+UsePAM yes
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Kerberos options                                                                       
+###############################################################################          
+#KerberosAuthentication no                                                               
+#KerberosGetAFSToken no                                                                  
+#KerberosOrLocalPasswd yes                                                               
+#KerberosTicketCleanup yes                                                               
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# GSSAPI options                                                                         
+###############################################################################          
+#GSSAPIAuthentication no                                                                 
+#GSSAPICleanupCredentials yes                                                            
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Display options                                                                        
+###############################################################################          
+X11Forwarding yes # use gui on client for server programs                                
+X11DisplayOffset 10                                                                      
+PrintMotd no                                                                             
+PrintLastLog yes                                                                         
+TCPKeepAlive yes                                                                         
+#UseLogin no                                                                             
+#MaxStartups 10:30:60                                                                    
+#Banner /etc/issue.net                                                                   
+                                                                                         
+                                                                                         
+                                                                                         
+###############################################################################          
+# Connection and Environment options                                                     
+###############################################################################          
+AcceptEnv LANG LC_* # allow client to pass environment variables                         
+Subsystem sftp /usr/lib/openssh/sftp-server:

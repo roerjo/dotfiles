@@ -3,11 +3,15 @@ alias dcu='docker-compose up'
 alias dcn='docker-compose run --rm app'
 alias debugUp='docker-compose -f docker-compose.debug.yml up'
 alias debugLocalUp='docker-compose -f docker-compose.debugLocalDB.yml up'
-alias dclu='docker-compose -f docker-compose.localDB.yml up'
-alias dcl='docker-compose -f docker-compose.localDB.yml run --rm app'
-alias dct='docker-compose -f docker-compose.testingLocalDB.yml run --rm app vendor/bin/phpunit'
-alias dctu='docker-compose -f docker-compose.testingLocalDB.yml up'
-alias dctr='docker-compose -f docker-compose.testingLocalDB.yml run --rm app'
+alias dcolu='docker-compose -f docker-compose.localDB.yml up'
+alias dcol='docker-compose -f docker-compose.localDB.yml run --rm app'
+alias dcot='docker-compose -f docker-compose.testingLocalDB.yml run --rm app vendor/bin/phpunit'
+alias dcotr='docker-compose -f docker-compose.testingLocalDB.yml run --rm app'
+
+alias dclu='docker-compose -f docker-compose.dev.yml up'
+alias dcl='docker-compose -f docker-compose.dev.yml run --rm app'
+alias dct='docker-compose -f docker-compose.testing.yml run --rm app vendor/bin/phpunit'
+alias dctr='docker-compose -f docker-compose.testing.yml run --rm app'
 
 # Json-Refs aliases
 alias jsonMain='json-refs resolve -y doc/spec/api-description.yml > public/docs/api-description-compiled.yml'
@@ -15,4 +19,8 @@ alias jsonAdmin='json-refs resolve -y doc/admin-spec/admin-api-description.yml >
 
 # Dredd
 alias dredd='dcl dredd public/docs/admin-api-description-compiled.yml http://usedequipmentguide.localhost:8080 --hookfiles=dreed/admin/dredd-hooks.php --language=vendor/bin/dredd-hooks-php'
+
+### Git ###
+
+alias gud='git reset --hard && git clean -df'
 
