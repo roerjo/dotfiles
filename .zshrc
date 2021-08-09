@@ -16,26 +16,11 @@ export ZSH=$HOME/.oh-my-zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  tmux
   zsh-syntax-highlighting
   zsh-autosuggestions
-  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
-
-
-
-
-
-###############################################################################
-                                  # VI MODE #
-###############################################################################
-
-# change insert mode escape sequence
-bindkey -M viins 'jk' vi-cmd-mode
-# timeout between keystrokes (don't go under 10, 0.1 sec)
-export KEYTIMEOUT=10
 
 
 
