@@ -1,3 +1,6 @@
+# Shell Aliases
+alias ll="ls -lahp --group-directories-first"
+
 # Docker aliases
 alias dcu='docker-compose up'
 alias dcn='docker-compose run --rm app'
@@ -23,4 +26,3 @@ alias dredd='dcl dredd public/docs/admin-api-description-compiled.yml http://use
 ### Git ###
 
 alias gud='git reset --hard && git clean -df'
-

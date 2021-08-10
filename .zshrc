@@ -1,6 +1,4 @@
-. ~/.aliases
-
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -22,6 +20,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Import aliases after plugins so that these take precedence
+. ~/.aliases
 
 
 
