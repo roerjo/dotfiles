@@ -1,6 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #export TERM="xterm-256color"
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:~/.composer/vendor/bin:$PATH:
@@ -24,40 +31,7 @@ source $ZSH/oh-my-zsh.sh
 . ~/.aliases
 
 
-
-
-###############################################################################
-                                # POWERLEVEL9K #
-                    # ICON/FONT FROM https://nerdfonts.com #
-###############################################################################
-
-### BASICS ###
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-
-### DIR ###
-
-POWERLEVEL9K_ETC_ICON=''
-POWERLEVEL9K_DIR_HOME_BACKGROUND='033'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='033'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
-POWERLEVEL9K_DIR_ETC_BACKGROUND='033'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='033'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
-POWERLEVEL9K_DIR_BACKGROUND='033'
-POWERLEVEL9K_DIR_FOREGROUND='black'
-
-### STATUS ###
-
-POWERLEVEL9K_STATUS_CROSS=true
-POWERLEVEL9K_STATUS_OK=false
-
-
 eval "$(mise activate zsh)"
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
-alias claude="/Users/roerjo/.claude/local/claude"
-
-export PATH="$PATH:$HOME/.composer/vendor/bin"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
